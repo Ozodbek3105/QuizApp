@@ -31,26 +31,54 @@ def home(request):
     user = request.session.get('username')
     return render(request, 'home.html', {'user': user})
 
+# ==================================
+# === O'ZGARTIRILGAN FUNKSIYA (MODUL) ===
+# ==================================
 def modules(request):
     if 'user_id' not in request.session:
         messages.error(request, "Iltimos, avval tizimga kiring.")
         return redirect('login')
     
-    modules = Question.objects.values_list('Modul', flat=True).distinct()
-    # print(modules)
-    return render(request, 'modules.html', {'modules': modules})
+    # 1. Bazadan barcha noyob modullarni olamiz
+    modules_qs = Question.objects.values_list('Modul', flat=True).distinct()
+    
+    # 2. Python yordamida ularni matn emas, SON sifatida tartiblaymiz
+    try:
+        # key=int ularni '1', '2', '10' deb to'g'ri tartiblaydi
+        modules_sorted = sorted(list(modules_qs), key=int)
+    except ValueError:
+        # Agar orasida "Maxsus" kabi son bo'lmagan nom bo'lsa,
+        # oddiy alfavit bo'yicha tartiblaymiz
+        modules_sorted = sorted(list(modules_qs))
 
+    return render(request, 'modules.html', {'modules': modules_sorted})
+
+# ===================================
+# === O'ZGARTIRILGAN FUNKSIYA (MAVZU) ===
+# ===================================
 def themes(request,modul_id):
     if 'user_id' not in request.session:
         messages.error(request, "Iltimos, avval tizimga kiring.")
         return redirect('login')
     
-    themes = Question.objects.filter(
+    # 1. Bazadan barcha noyob mavzularni olamiz
+    # Eslatma: Bu (values) bizga lug'atlar ro'yxatini qaytaradi:
+    # [{'lMavzu': '1'}, {'lMavzu': '10'}, {'lMavzu': '2'}]
+    themes_qs = Question.objects.filter(
             Modul=modul_id
         ).values('lMavzu').distinct()
-    print(themes)
 
-    return render(request, "themes.html",{"themes":themes,"modul_id":modul_id})
+    # 2. Python yordamida sonli tartiblaymiz
+    try:
+        # Har bir lug'atdan 'lMavzu' qiymatini olib, 'int' ga o'girib tartiblaymiz
+        themes_sorted = sorted(list(themes_qs), key=lambda item: int(item['lMavzu']))
+    except ValueError:
+        # Agar son bo'lmagan nomlar bo'lsa, alfavit bo'yicha tartiblaymiz
+        themes_sorted = sorted(list(themes_qs), key=lambda item: item['lMavzu'])
+    
+    print(themes_sorted)
+
+    return render(request, "themes.html",{"themes": themes_sorted,"modul_id":modul_id})
 
 def do_test(request, modul_id, mavzu_id): 
     """
@@ -69,7 +97,7 @@ def do_test(request, modul_id, mavzu_id):
             lMavzu=str(mavzu_id)
         )
         
-        NUM_QUESTIONS_TO_SELECT = 25
+        NUM_QUESTIONS_TO_SELECT = 2
         
         # QuerySet'ni ro'yxatga o'tkazish
         questions_list = list(all_questions_qs)
@@ -109,7 +137,7 @@ def do_real_test(request):
         
     questions = Question.objects.all()  
     questions = list(questions)  # Convert queryset to list
-    random_questions = random.sample(questions, min(len(questions), 25))
+    random_questions = random.sample(questions, min(len(questions), 5))
     total_question = len(random_questions)
     request.session['total_question'] = total_question
     return render(request, 'do_real_test.html', {'questions': random_questions,'total_question':total_question})
@@ -418,11 +446,6 @@ def start_special_quiz_view(request):
         return redirect('welcome')
 
 # ====================================================================
-# finish_special_quiz_view O'CHIRILDI, CHUNKI KERAK EMAS
-# ====================================================================
-
-
-# ====================================================================
 # (Qolgan funksiyalar)
 # ====================================================================
 
@@ -466,4 +489,3 @@ def stats_dashboard_view(request):
     }
     
     return render(request, 'stats_dashboard.html', context)
-
