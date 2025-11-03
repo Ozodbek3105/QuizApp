@@ -2,10 +2,10 @@
 Django settings for asosiy project.
 (DigitalOcean App Platform uchun sozlangan)
 """
-import os # <--- QO'SHILDI
-import dj_database_url # <--- Bu sizda bor edi
+import os 
+import dj_database_url 
 from pathlib import Path
-# from re import S # <--- Keraksiz import (o'chirildi)
+# from re import S (Keraksiz import)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,30 +16,30 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ====================================================================
 
 # SECRET_KEY endi serverning o'zidan olinadi (xavfsiz)
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-default-key-for-local-dev')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2b)bd1f90)hh=v2ksl-h378#y#e=i256&w+7100kii0_30o*vg')
 
 # DEBUG serverda avtomatik 'False' bo'ladi, lokalda 'True'
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-# ALLOWED_HOSTS server manzilini avtomatik oladi
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-# === O'ZGARISH SHU YERDA ('DO_APP_URL' -> 'APP_DOMAIN') ===
-if 'APP_DOMAIN' in os.environ:
-    ALLOWED_HOSTS.append(os.environ.get('APP_DOMAIN'))
 
-# Sizning ngrok manzilingizni ham qo'shamiz
-ALLOWED_HOSTS.append('prodissolution-scripless-otha.ngrok-free.dev')
+# === ASOSIY O'ZGARISH SHU YERDA ===
+# ALLOWED_HOSTS ni QO'LDA KIRITAMIZ (Eng ishonchli usul)
+ALLOWED_HOSTS = [
+    'quiz-app-rtyfi.ondigitalocean.app', # <-- SIZNING ASOSIY MANZILINGIZ
+    '127.0.0.1',
+    'localhost',
+    'prodissolution-scripless-otha.ngrok-free.dev', # <-- Sizning ngrok
+]
 
 
 # CSRF himoyasi uchun ishonchli manbalar
 CSRF_TRUSTED_ORIGINS = [
+    'https://quiz-app-rtyfi.ondigitalocean.app', # <-- SIZNING ASOSIY MANZILINGIZ
     'https://prodissolution-scripless-otha.ngrok-free.dev',
 ]
-# === O'ZGARISH SHU YERDA ('DO_APP_URL' -> 'APP_DOMAIN') ===
-if 'APP_DOMAIN' in os.environ:
-    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ.get('APP_DOMAIN')}")
+# ====================================================================
 
-...
+
 # ====================================================================
 # ILOVALAR VA MIDDLEWARE
 # ====================================================================
