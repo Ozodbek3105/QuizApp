@@ -137,7 +137,7 @@ def do_real_test(request):
         
     questions = Question.objects.all()  
     questions = list(questions)  # Convert queryset to list
-    random_questions = random.sample(questions, min(len(questions), 5))
+    random_questions = random.sample(questions, min(len(questions), 25))
     total_question = len(random_questions)
     request.session['total_question'] = total_question
     return render(request, 'do_real_test.html', {'questions': random_questions,'total_question':total_question})
