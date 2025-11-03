@@ -24,13 +24,17 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # === ASOSIY O'ZGARISH SHU YERDA ===
 # ALLOWED_HOSTS ni QO'LDA KIRITAMIZ (Eng ishonchli usul)
-ALLOWED_HOSTS = ['quiz-app-rtyfi.ondigitalocean.app', '127.0.0.1','localhost','prodissolution-scripless-otha.ngrok-free.dev', # <-- Sizning ngrok
+ALLOWED_HOSTS = [
+    'quiz-app-njyt6.ondigitalocean.app', # <-- SIZNING YANGI MANZILINGIZ
+    '127.0.0.1',
+    'localhost',
+    'prodissolution-scripless-otha.ngrok-free.dev', # <-- Sizning ngrok
 ]
 
 
 # CSRF himoyasi uchun ishonchli manbalar
 CSRF_TRUSTED_ORIGINS = [
-    'https://quiz-app-rtyfi.ondigitalocean.app', # <-- SIZNING ASOSIY MANZILINGIZ
+    'https://quiz-app-njyt6.ondigitalocean.app', # <-- SIZNING YANGI MANZILINGIZ
     'https://prodissolution-scripless-otha.ngrok-free.dev',
 ]
 # ====================================================================
