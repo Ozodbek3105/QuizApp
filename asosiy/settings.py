@@ -23,8 +23,9 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # ALLOWED_HOSTS server manzilini avtomatik oladi
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-if 'DO_APP_URL' in os.environ:
-    ALLOWED_HOSTS.append(os.environ.get('DO_APP_URL'))
+# === O'ZGARISH SHU YERDA ('DO_APP_URL' -> 'APP_DOMAIN') ===
+if 'APP_DOMAIN' in os.environ:
+    ALLOWED_HOSTS.append(os.environ.get('APP_DOMAIN'))
 
 # Sizning ngrok manzilingizni ham qo'shamiz
 ALLOWED_HOSTS.append('prodissolution-scripless-otha.ngrok-free.dev')
@@ -34,10 +35,11 @@ ALLOWED_HOSTS.append('prodissolution-scripless-otha.ngrok-free.dev')
 CSRF_TRUSTED_ORIGINS = [
     'https://prodissolution-scripless-otha.ngrok-free.dev',
 ]
-if 'DO_APP_URL' in os.environ:
-    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ.get('DO_APP_URL')}")
+# === O'ZGARISH SHU YERDA ('DO_APP_URL' -> 'APP_DOMAIN') ===
+if 'APP_DOMAIN' in os.environ:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ.get('APP_DOMAIN')}")
 
-
+...
 # ====================================================================
 # ILOVALAR VA MIDDLEWARE
 # ====================================================================
