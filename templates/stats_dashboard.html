@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mening Natijalarim Statistikasi</title>
+    
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stats_style.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="card result-card-wrapper" style="max-width: 600px;">
+            
+            <div class="header-section">
+                <a href="{% url 'home' %}" class="back-link">&larr; Orqaga</a>
+            </div>
+
+            <h1 class="page-title">Mening Natijalarim</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h2>{{ avg_score_percent }}%</h2>
+                    <p>O'rtacha Haqiqiy Imtihon Bali</p>
+                </div>
+                <div class="stat-card">
+                    <h2>{{ total_real_tests }}</h2>
+                    <p>Topshirilgan Final Imtihonlari</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Imtihon Tarixi</h2>
+            {% if all_results_history %}
+                {% for result in all_results_history %}
+                    <div class="history-item">
+                         {% comment %} <div >
+                                <strong>🔥</strong>
+                           
+                        </div> {% endcomment %}
+                        <div class="history-info">
+                            <strong>📚 {{ result.modul }}</strong>
+                            <br><small>{{ result.date_taken|date:"d M Y H:i" }}</small>
+                        </div>
+                        <div class="history-score">
+                            {{ result.score }}/{{ result.total_questions }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="info-box">
+                    Hali hech qanday imtihon topshirilmadi.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script src="{% static 'js/stats_script.js' %}"></script>
+</body>
+</html>

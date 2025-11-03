@@ -1,0 +1,213 @@
+/* stats_style.css */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* Umumiy sahifa tartibi (Auth style bilan chalkashmasligi uchun) */
+.page-title {
+    color: #5d5dff;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Orqaga havola uslubi */
+.back-link {
+    text-decoration: none;
+    color: #5d5dff;
+    font-size: 1.1em;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+/* Statistik kartalarni yonma-yon qo'yish */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Har bir statistik karta uslubi */
+.stat-card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+.stat-card h2 {
+    font-size: 2em;
+    color: #5d5dff;
+    margin-bottom: 5px;
+}
+.stat-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+/* Bo'lim sarlavhalari (Modullar Bo'yicha Statistika, Imtihon Tarixi) */
+.section-title {
+    font-size: 1.4em;
+    color: #333;
+    /* Rasm 71fda4.png dagi kabi ko'rinish uchun: */
+    border-bottom: 2px solid #5d5dff; 
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Ma'lumot yo'qligi haqidagi xabar uslubi */
+.info-box {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+/* Tarixdagi har bir natija uslubi */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.history-item:last-child {
+    border-bottom: none;
+}
+.history-score {
+    font-weight: bold;
+    color: #5d5dff; /* Statistikadagi asosiy rang */
+}
+
+/* Kichik ekranlar uchun adaptatsiya */
+@media (max-width: 600px) {
+    .stats-grid {
+        flex-direction: column;
+    }
+}
+/* stats_style.css */
+
+/* Umumiy sahifa tartibi */
+.page-title {
+    color: #5d5dff;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Orqaga havola uslubi */
+.back-link {
+    text-decoration: none;
+    color: #5d5dff;
+    font-size: 1.1em;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+/* Statistik kartalarni yonma-yon qo'yish */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* ✅ 1. STATISTIK KARTALARNI AJRATISH (stat-card) */
+.stat-card {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    /* Qo'shimcha soya va chegara beriladi */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Katta va sezilarli soya */
+    border: 1px solid #e0e0e0; 
+    transition: transform 0.2s; /* Hover effekti */
+    text-align: center;
+}
+.stat-card:hover {
+    transform: translateY(-3px); /* Ajralib turishi uchun ozgina ko'tarish */
+}
+
+.stat-card h2 {
+    font-size: 2em;
+    color: #5d5dff;
+    margin-bottom: 5px;
+}
+.stat-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0;
+}
+
+/* Bo'lim sarlavhalari */
+.section-title {
+    font-size: 1.4em;
+    color: #333;
+    border-bottom: 2px solid #5d5dff;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Ma'lumot yo'qligi haqidagi xabar uslubi */
+.info-box {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    /* ✅ Chegara qo'shiladi */
+    border: 1px dashed #cccccc; 
+}
+
+/* ✅ 2. TARIX DAGI HAR BIR ELEMENTNI AJRATISH (history-item) */
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px; /* Padding kattalashtirildi */
+    margin-bottom: 10px; /* Oraliq qo'shildi */
+    background-color: #ffffff;
+    border-radius: 8px;
+    /* Qo'shimcha ajratish uchun yengil soya */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); 
+    border: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.history-item:hover {
+    background-color: #f9f9ff;
+}
+
+.history-info strong {
+    font-size: 1.05em;
+}
+.history-score {
+    font-weight: bold;
+    color: #5d5dff;
+}
+
+/* Kichik ekranlar uchun adaptatsiya */
+@media (max-width: 480px) {
+    .stats-grid {
+        flex-direction: column;
+    }
+}
+.card.result-card-wrapper {
+    background-color: #ffffff; /* Oq fon */
+    border-radius: 16px; /* Yumaloq burchaklarni kattalashtirish */
+    padding: 30px; /* Ichki bo'shliqni kattalashtirish */
+    
+    /* ✅ Soya va Chegara orqali yanada yaqqol ajratish */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Katta va aniqroq soya */
+    border: 1px solid #f0f0f0; /* Juda yengil chegara */
+}

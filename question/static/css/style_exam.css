@@ -1,0 +1,538 @@
+/* style_exam.css */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ======================================= */
+/* 0. GLOBAL SOZLAMALAR */
+/* ======================================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ======================================= */
+/* 1. KARTA KONTEYNERLARI */
+/* ======================================= */
+.container {
+    width: 100%;
+    max-width: 650px; 
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* ======================================= */
+/* 2. HEADER VA VAQT HISOBLAGICH */
+/* ======================================= */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.exam-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3b5998;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.timer-box {
+    text-align: right;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.timer-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-weight: 400;
+    margin-bottom: -3px;
+}
+
+.timer-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #dc3545;
+}
+
+/* ======================================= */
+/* 3. SAVOL VA JAVOB USLUBLARI */
+/* ======================================= */
+.question-block {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    display: none; /* Sukut bo'yicha yashirin */
+}
+
+.question-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.options-wrapper {
+    margin: 20px 0;
+}
+
+/* Javob tanlovlari (Radio options) */
+.option-label {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-label:hover:not(.correct-answer):not(.incorrect-answer) {
+    background-color: #e9ecef;
+    border-color: #3b5998;
+    transform: translateX(5px);
+}
+
+.option-label input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+    cursor: pointer;
+    accent-color: #3b5998;
+    width: 20px;
+    height: 20px;
+}
+
+.option-label input[type="radio"]:disabled {
+    cursor: not-allowed;
+}
+
+.option-text {
+    font-size: 1rem;
+    color: #333;
+    word-break: break-word;
+    flex: 1;
+    line-height: 1.5;
+}
+
+/* Disabled holatda hover effektini o'chirish */
+.option-label:has(input[type="radio"]:disabled) {
+    cursor: not-allowed;
+}
+
+.option-label:has(input[type="radio"]:disabled):hover {
+    transform: none;
+}
+
+
+/* ======================================= */
+/* 3.1. JAVOB HOLATLARI (YANGI QO'SHILDI)  */
+/* ======================================= */
+
+.option-label.correct-answer {
+    background-color: #22c55e !important;
+    border-color: #16a34a !important;
+    font-weight: 600;
+}
+
+.option-label.incorrect-answer {
+    background-color: #ef4444 !important;
+    border-color: #dc2626 !important;
+    font-weight: 600;
+}
+
+.option-label.correct-answer .option-text,
+.option-label.incorrect-answer .option-text {
+    color: #ffffff;
+}
+
+/* ======================================= */
+/* 4. NAVIGATION BUTTONS */
+/* ======================================= */
+
+/* === JAVOBNI QABUL QILISH TUGMASI (YANGI QO'SHILDI) === */
+.check-answer-button-wrapper {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px; /* Navigatsiyadan ajratish */
+}
+
+.check-answer-btn {
+    background-color: #17a2b8; /* Boshqacha rang (info) */
+    width: 100%; 
+}
+
+.check-answer-btn:hover {
+    background-color: #138496;
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.check-answer-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+/* === YAKUNI === */
+
+
+.navigation-buttons {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 30px; 
+    gap: 15px; 
+}
+
+.submit-button {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+.next-question-btn,
+.prev-question-btn {
+    width: 50%; 
+    margin-top: 0; 
+}
+
+#final-finish-btn {
+    width: 100%; 
+    background-color: #28a745;
+}
+
+#final-finish-btn:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* ======================================= */
+/* 5. MOBIL MOSLASHUV */
+/* ======================================= */
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start; 
+    }
+    
+    .container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .card {
+        max-width: 100%; 
+        min-height: 100vh; 
+        border-radius: 0; 
+        box-shadow: none; 
+        padding: 15px; 
+    }
+    
+    .header-section {
+        flex-direction: column; 
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .exam-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .timer-box {
+        width: 100%;
+        text-align: center;
+    }
+
+    .question-block {
+        padding: 15px;
+    }
+    
+    .question-text {
+        font-size: 1.05rem;
+    }
+    
+    .option-label {
+        padding: 10px 12px;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    
+    .next-question-btn,
+    .prev-question-btn {
+        width: 100%; 
+    }
+}
+
+/* ======================================= */
+/* 6. NATIJALAR SAHIFASI */
+/* ======================================= */
+.result-card-wrapper {
+    max-width: 500px;
+}
+
+.result-summary {
+    text-align: left;
+    margin-bottom: 30px;
+    padding: 10px 0;
+}
+
+.result-summary hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.score-display {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.score-display h2 {
+    font-size: 1.6rem;
+    color: #333;
+    margin: 0;
+}
+
+.score-count {
+    font-weight: 700;
+    color: #3b5998;
+    font-size: 2rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.progress-bar-label {
+    text-align: right;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    height: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #28a745;
+    transition: width 0.8s ease-in-out;
+}
+
+.message-box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.message-box p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.message-box .success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.message-box .warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.message-box .error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.back-to-home-btn {
+    background-color: #3b5998;
+    margin-top: 25px;
+}
+
+.back-to-home-btn:hover {
+    background-color: #2d426d;
+}
+
+.minimal-back-btn {
+    display: inline-block;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #4a90e2;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.minimal-back-btn:hover {
+    color: #357ABD;
+    text-decoration: underline;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #3b5998;
+    color: white;
+    font-weight: 600;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.results-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: default; 
+}
+
+.score-cell {
+    font-weight: 700;
+    text-align: center;
+}
+/* ======================================= */
+/* 7. NATIJA MODAL OYNASI (YANGI) */
+/* ======================================= */
+
+.result-overlay-container {
+    position: fixed; /* Butun ekranni qoplash */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Qora fon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Boshqa elementlardan ustun bo'lishi */
+}
+
+.result-card {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; 
+    text-align: center;
+}
+
+.result-title {
+    color: #3b5998;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.result-score {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.result-score strong {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: 700;
+}
+
+.result-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Tugmalar orasi */
+}
+
+/* Natija tugmalari uchun maxsus stillar */
+.purple-btn {
+    background-color: #5d50ff;
+}
+.purple-btn:hover {
+    background-color: #4a3edf;
+}
+
+.gray-btn {
+    background-color: #6c757d;
+    text-decoration: none;
+    text-align: center;
+}
+.gray-btn:hover {
+    background-color: #5a6268;
+}

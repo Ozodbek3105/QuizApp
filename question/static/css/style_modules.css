@@ -1,0 +1,118 @@
+/* Umumiy sozlamalar (oldingi fayldagiga o'xshash) */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; 
+    text-align: left; /* Matnni chapga surish */
+}
+
+/* Sarlavha va orqaga tugmasi */
+.back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3b5998; /* Ko'k rang */
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.back-link i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.back-link:hover {
+    color: #007bff;
+}
+
+.main-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee; /* Rasmdagi kabi pastki chiziq */
+    padding-bottom: 10px;
+}
+
+/* Modul elementlari uslubi */
+.module-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.module-item:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.module-link {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.module-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #3b5998; /* Ko'k rang */
+    margin: 0 0 5px 0;
+}
+
+.module-description {
+    font-size: 0.9rem;
+    color: #6c757d; /* Kichikroq kulrang matn */
+    margin: 0 0 8px 0;
+}
+
+.module-info {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #008000; /* Yashilroq rang */
+    margin: 0;
+}
+
+/* "Mock" modullar uchun maxsus uslub (rasmdagidek) */
+
+/* Moslashuvchanlik */
+@media (max-width: 480px) {
+    .card {
+        padding: 20px;
+    }
+    .main-title {
+        font-size: 1.6rem;
+    }
+    .module-item {
+        padding: 12px 15px;
+    }
+    .module-title {
+        font-size: 1.05rem;
+    }
+}

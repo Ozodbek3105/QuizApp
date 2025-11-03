@@ -1,0 +1,167 @@
+/* auth_style.css */
+
+/* Global sozlamalar */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Yengil kulrang fon */
+}
+
+/* Markazlashtirish Konteyneri */
+.auth-container {
+    display: flex;
+    justify-content: center; /* Gorizontal markaz */
+    align-items: center;    /* Vertikal markaz */
+    min-height: 100vh;
+}
+
+/* Karta uslubi */
+.auth-card {
+    background-color: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Karta maksimal kengligi */
+    text-align: center;
+}
+
+/* Sarlavha uslubi */
+.auth-title {
+    color: #3b5998;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Input guruhlari */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Input maydonlari */
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Padding kenglikni oshirmasligi uchun */
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Tugma uslubi */
+.auth-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #5d50ff; /* Asosiy Kirish tugmasi rangi */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.auth-button:hover {
+    background-color: #4a3edf;
+}
+
+/* Ro'yxatdan o'tish tugmasi uchun farqli rang (ixtiyoriy) */
+
+
+/* Pastki havola (Footer) */
+.auth-footer {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 25px;
+}
+
+.footer-link {
+    color: #3b5998;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobil moslashuv */
+@media (max-width: 480px) {
+    .auth-card {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+}
+
+.welcome-card {
+    /* Agar kerak bo'lsa, max-width ni o'zgartirish mumkin */
+    max-width: 450px; 
+}
+
+.welcome-buttons {
+    margin-top: 35px;
+}
+
+/* Tugmalar (menu-button) ranglari oldingi qadamda allaqachon belgilangan:
+   .purple-btn (Kirish uchun)
+   .green-btn (Ro'yxatdan o'tish uchun)
+ */
+
+.welcome-card .subtitle {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+.login-btn {
+    margin-top: 20px;
+    background-color: hsl(221, 53%, 44%);
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-btn:hover {
+    background-color: hsl(221, 53%, 34%);
+    transform: scale(1.05);
+}
+
+.register-btn {
+    background-color: #28a745;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.register-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}

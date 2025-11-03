@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtihon Tayyorlash</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="greeting">Salom, {{user}}!</h1>
+            <p class="subtitle">Nima bilan shug'ullanishni xohlaysiz?</p>
+            {% csrf_token %}
+            <a href="{% url 'modules' %}" class="button green-btn">
+                <span class="emoji">📚</span>
+                Imtihonga Tayyorlanish (Modullar)
+            </a>
+            
+            <a href="{% url 'do_real_test' %}" class="button red-btn">
+                <span class="emoji">🔥</span>
+                Haqiqiy Imtihon (25 Savol, 60 min)
+            </a>
+            
+            <a href="{%url 'result' %}" class="button blue-btn">
+                <span class="emoji">🏆</span>
+                Mening Natijalarim
+            </a>
+
+            <a href="{%url 'logout' %}" class="logout">Tizimdan Chiqish</a>
+        </div>
+    </div>
+</body>
+</html>

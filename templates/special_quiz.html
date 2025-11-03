@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxsus Imtihon</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style_exam.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card exam-card-wrapper">
+            
+            <div class="header-section">
+                <h1 class="exam-title">Maxsus Imtihon</h1>
+                
+                </div>
+
+        <form id="main-exam-form">
+            
+            <input type="hidden" id="total_question_count" name="total_question" value="{{ total_question }}">
+            
+            {% for question in questions %}
+                <div class="question-block" 
+                    data-question-id="{{ question.Savol_ID }}"
+                    data-correct-answer="{{ question.To_g_ri_Javob }}"
+                    id="q_block_{{ forloop.counter }}"> 
+
+                    <h2 class="question-text">{{ forloop.counter }}. {{ question.Savol_Matni }}</h2>
+                    
+                    <div class="options-wrapper"> 
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="A"><span class="option-text">A) {{ question.Variant_A }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="B"><span class="option-text">B) {{ question.Variant_B }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="C"><span class="option-text">C) {{ question.Variant_C }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="D"><span class="option-text">D) {{ question.Variant_D }}</span></label>
+                    </div>
+                    
+                    <div class="check-answer-button-wrapper">
+                        <button type="button" class="submit-button check-answer-btn">
+                            Javobni Qabul Qilish
+                        </button>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        {% if not forloop.first %}
+                        <button type="button" class="prev-question-btn submit-button" 
+                                data-prev-id="q_block_{{ forloop.counter | add:'-1' }}">
+                            Oldingi Savol
+                        </button>
+                        {% endif %}
+
+                        {% if not forloop.last %}
+                        <button type="button" class="next-question-btn submit-button" 
+                                data-next-id="q_block_{{ forloop.counter | add:'1' }}">
+                            Keyingi Savol
+                        </button>
+                        {% else %}
+                        <button type="button" id="final-finish-btn" class="submit-button">
+                            Imtihonni Yakunlash
+                        </button>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </form>
+        </div>
+    </div>
+
+    <div id="result-overlay" class="result-overlay-container" style="display: none;">
+        <div class="result-card">
+            <h2 class="result-title">Imtihon Yakunlandi!</h2>
+            <p class="result-score">Sizning natijangiz: <strong id="score-display">0 / 0</strong></p>
+            <div class="result-buttons">
+                <button id="restart-quiz-btn" class="submit-button purple-btn">Qayta Boshlash</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/special_quiz.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Tayyorlov Imtihon Modullari</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style_modules.css' %}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card module-card-wrapper">
+            
+            <a href="{% url 'home' %}" class="back-link">
+                <i class="fas fa-chevron-left"></i> Orqaga
+            </a>
+            
+            <h1 class="main-title">Tayyorlov Imtihon Modullari</h1>
+            
+            {% for module in modules %}
+            <div class="module-item mock">
+                <a href="{% url 'themes' module %}" class="module-link">
+                    <h2 class="module-title">{{ module }}-Modul</h2> 
+                    
+                    {% comment %} <p class="module-description">{{ module.description }}</p> {% endcomment %}
+
+                </a>
+            </div>
+            {% empty %}
+            <div class="no-modules">
+                <p>Hozircha tayyorlov modullari mavjud emas.</p>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

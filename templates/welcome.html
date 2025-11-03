@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xush Kelibsiz</title>
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card welcome-card">
+            
+            <h1 class="auth-title">Tizimga Xush Kelibsiz!</h1>
+            <p class="subtitle">Tayyorlov imtihonlarini boshlash uchun avvalo tizimga kiring yoki ro'yxatdan o'ting.</p>
+
+            <div class="menu-options welcome-buttons">
+                
+                <a href="{% url 'login' %}" type=button   class="login-btn">
+                     Kirish
+                </a>
+                
+                <a href="{% url 'register' %}" type=button class="register-btn">
+                    Ro'yxatdan O'tish
+                </a>
+
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

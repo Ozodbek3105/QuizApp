@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqiqiy Imtihon </title>
+    
+    <link rel="stylesheet" href="{% static 'css/style_exam.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card exam-card-wrapper">
+            
+            <div class="header-section">
+                <h1 class="exam-title">Haqiqiy Imtihon</h1>
+                <div class="timer-box">
+                    <span class="timer-label">Qolgan vaqt:</span>
+                    <span id="timer" class="timer-value">59:59</span> 
+                </div>
+            </div>
+
+        <form method="post" action="{% url 'finish_real_exam' %}" id="main-exam-form">
+            {% csrf_token %}
+            
+            <input type="hidden" name="modul_id" value="{{ modul }}">
+            <input type="hidden" name="total_question" value="{{ total_question }}">
+            
+            {% for question in questions %}
+                <div class="question-block" 
+                    data-question-id="{{ question.Savol_ID }}"
+                    data-correct-answer="{{ question.To_g_ri_Javob }}"
+                    id="q_block_{{ forloop.counter }}"> 
+
+                    <h2 class="question-text">{{ forloop.counter }}. {{ question.Savol_Matni }}</h2>
+                    
+                    <div class="options-wrapper"> 
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="A"><span class="option-text">A) {{ question.Variant_A }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="B"><span class="option-text">B) {{ question.Variant_B }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="C"><span class="option-text">C) {{ question.Variant_C }}</span></label>
+                        <label class="option-label"><input type="radio" name="q_{{ question.Savol_ID }}" value="D"><span class="option-text">D) {{ question.Variant_D }}</span></label>
+                    </div>
+                    
+                    <div class="check-answer-button-wrapper">
+                        <button type="button" class="submit-button check-answer-btn">
+                            Javobni Qabul Qilish
+                        </button>
+                    </div>
+                    <div class="navigation-buttons">
+                        {% if not forloop.first %}
+                        <button type="button" class="prev-question-btn submit-button" 
+                                data-prev-id="q_block_{{ forloop.counter | add:'-1' }}">
+                            Oldingi Savol
+                        </button>
+                        {% endif %}
+
+                        {% if not forloop.last %}
+                        <button type="button" class="next-question-btn submit-button" 
+                                data-next-id="q_block_{{ forloop.counter | add:'1' }}">
+                            Keyingi Savol
+                        </button>
+                        {% else %}
+                        <button type="submit" id="final-finish-btn" class="submit-button">
+                            Imtihonni Yakunlash
+                        </button>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </form>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/script_exam.js' %}"></script>
+</body>
+</html>

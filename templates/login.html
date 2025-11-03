@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tizimga Kirish</title>
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1 class="auth-title">Tizimga Kirish</h1>
+            
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                
+                <div class="input-group">
+                    <label for="username">Foydalanuvchi nomi</label>
+                    <input type="text" id="username" name="username" placeholder="Foydalanuvchi nomini kiriting" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Parol</label>
+                    <input type="password" id="password" name="password" placeholder="Parolni kiriting" required>
+                </div>
+                
+                <button type="submit" class="auth-button">Kirish</button>
+            </form>
+            
+            <p class="auth-footer">
+                Akkauntingiz yo'qmi? <a href="{% url 'register' %}" class="footer-link">Ro'yxatdan o'tish</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

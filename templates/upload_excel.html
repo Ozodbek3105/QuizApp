@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savollarni Exceldan Yuklash</title>
+    <!-- Chiroyli ko'rinish uchun oddiy stil (Bootstrap kabi) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 700px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Savollarni .xlsx fayldan yuklash</h2>
+                
+                <!-- Xabarlar (Natijalar) shu yerda ko'rinadi -->
+                {% if messages %}
+                    <div class="mb-3">
+                        {% for message in messages %}
+                            <!-- Xabarning turiga qarab (success, warning) alohida rang beramiz -->
+                            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-warning{% endif %}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        
+                <p class="text-muted">Excel faylingiz ustunlari bazadagi modelga mos ekanligiga ishonch hosil qiling.</p>
+        
+                <!-- Fayl yuklash formasi -->
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        {{ form.excel_file.label_tag }}
+                        {{ form.excel_file }}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.sheet_name.label_tag }}
+                        {{ form.sheet_name }}
+                        <div class="form-text">{{ form.sheet_name.help_text }}</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Yuklash</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
