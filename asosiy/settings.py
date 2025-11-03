@@ -24,11 +24,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # === ASOSIY O'ZGARISH SHU YERDA ===
 # ALLOWED_HOSTS ni QO'LDA KIRITAMIZ (Eng ishonchli usul)
-ALLOWED_HOSTS = [
-    'quiz-app-rtyfi.ondigitalocean.app', # <-- SIZNING ASOSIY MANZILINGIZ
-    '127.0.0.1',
-    'localhost',
-    'prodissolution-scripless-otha.ngrok-free.dev', # <-- Sizning ngrok
+ALLOWED_HOSTS = ['quiz-app-rtyfi.ondigitalocean.app', '127.0.0.1','localhost','prodissolution-scripless-otha.ngrok-free.dev', # <-- Sizning ngrok
 ]
 
 
