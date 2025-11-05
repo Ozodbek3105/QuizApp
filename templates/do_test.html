@@ -60,6 +60,7 @@
                             Javobni Qabul Qilish
                         </button>
                     </div>
+                    
                     <div class="navigation-buttons">
                         {% if not forloop.first %}
                         <button type="button" class="prev-question-btn submit-button" 
@@ -73,15 +74,18 @@
                                 data-next-id="q_block_{{ forloop.counter | add:'1' }}">
                             Keyingi Savol
                         </button>
-                        {% else %}
-                        <button type="submit" id="final-finish-btn" class="submit-button">
-                            Imtihonni Yakunlash
-                        </button>
                         {% endif %}
-                    </div>
+                        </div>
                     
                 </div>
             {% endfor %}
+
+            <div class="finish-button-wrapper">
+                <button type="submit" id="final-finish-btn" class="submit-button">
+                    Imtihonni Yakunlash
+                </button>
+            </div>
+            
         </form>
         </div>
     </div>

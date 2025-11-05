@@ -536,3 +536,23 @@ body {
 .gray-btn:hover {
     background-color: #5a6268;
 }
+/* ======================================= */
+/* 8. YAKUNIY YAKUNLASH TUGMASI (YANGI)   */
+/* ======================================= */
+
+.finish-button-wrapper {
+    margin-top: 30px; /* Savol bloklaridan ajratish uchun */
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* Chiziq bilan ajratish */
+    text-align: center;
+}
+
+.finish-button-wrapper #final-finish-btn {
+    width: 100%; /* Kenglikni to'ldirish */
+    background-color: #28a745; /* Yashil rang */
+}
+
+.finish-button-wrapper #final-finish-btn:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
