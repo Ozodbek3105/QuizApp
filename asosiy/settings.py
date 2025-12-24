@@ -25,6 +25,7 @@ DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 # === ASOSIY O'ZGARISH SHU YERDA ===
 # ALLOWED_HOSTS ni QO'LDA KIRITAMIZ (Eng ishonchli usul)
 ALLOWED_HOSTS = [
+    'https://goldfish-app-cdlpa.ondigitalocean.app',
     'quiz-app-njyt6.ondigitalocean.app', # <-- SIZNING YANGI MANZILINGIZ
     '127.0.0.1',
     'localhost',
@@ -34,7 +35,7 @@ ALLOWED_HOSTS = [
 
 # CSRF himoyasi uchun ishonchli manbalar
 CSRF_TRUSTED_ORIGINS = [
-    'https://goldfish-app-cdlpa.ondigitalocean.app'
+    'https://goldfish-app-cdlpa.ondigitalocean.app',
     'https://quiz-app-njyt6.ondigitalocean.app', # <-- SIZNING YANGI MANZILINGIZ
     'https://prodissolution-scripless-otha.ngrok-free.dev',
 ]
