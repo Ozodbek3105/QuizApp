@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
 # CSRF himoyasi uchun ishonchli manbalar
 CSRF_TRUSTED_ORIGINS = [
+    'https://goldfish-app-cdlpa.ondigitalocean.app'
     'https://quiz-app-njyt6.ondigitalocean.app', # <-- SIZNING YANGI MANZILINGIZ
     'https://prodissolution-scripless-otha.ngrok-free.dev',
 ]
